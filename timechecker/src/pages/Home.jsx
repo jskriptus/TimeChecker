@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Timer } from '../components';
-
+import Countdown from 'react-countdown';
+import store from '../redux/store';
 /*
     После нажатия на действие, блок дейстствий скрывается. 
     Появляется блок с обратным отсчетом времени (интервал пользователь указывает в найстроках)
@@ -21,10 +21,26 @@ function Home() {
         setSelectedAction(action);
     };
 
+    const dispatchTimer = (time) => {
+        store.dispatch({
+            type: 'SET_TIMER',
+            payload: time,
+        });
+    };
+
+    const renderer = ({ minutes, seconds }) => {
+        return (
+            <span>
+                {minutes}:{seconds}
+            </span>
+        );
+    };
+
     return (
         <main className="home">
             {selectedAction ? (
-                <Timer minutes="15" />
+                (dispatchTimer(15),
+                (<Countdown date={Date.now() + store.getState().time * 60000} renderer={renderer}/>))
             ) : (
                 <div className="home__actions">
                     {userActions ? (
