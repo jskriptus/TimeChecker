@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Countdown from 'react-countdown';
 import store from '../redux/store';
+import moment from "moment";
 /*
     После нажатия на действие, блок дейстствий скрывается. 
     Появляется блок с обратным отсчетом времени (интервал пользователь указывает в найстроках)
@@ -17,8 +18,9 @@ function Home() {
 
     const [selectedAction, setSelectedAction] = useState();
 
-    const selectAction = (action) => {
+    const selectAction = (action, timeSetting) => {
         setSelectedAction(action);
+        dispatchTimer(moment().add(timeSetting, "minutes").valueOf());
     };
 
     const dispatchTimer = (time) => {
@@ -29,24 +31,24 @@ function Home() {
     };
 
     const renderer = ({ minutes, seconds }) => {
+        const formattedSeconds = seconds >= 10 ? seconds : "0" + seconds;
         return (
             <span>
-                {minutes}:{seconds}
+                {minutes}:{formattedSeconds}
             </span>
         );
     };
 
     return (
         <main className="home">
-            {selectedAction ? (
-                (dispatchTimer(15),
-                (<Countdown date={Date.now() + store.getState().time * 60000} renderer={renderer}/>))
+            {selectedAction || store.getState().time ? (
+                <Countdown date={store.getState().time} renderer={renderer}/>
             ) : (
                 <div className="home__actions">
                     {userActions ? (
                         userActions.map((action) => (
                             <button
-                                onClick={() => selectAction(action)}
+                                onClick={() => selectAction(action, 15)}
                                 type="submit"
                                 className={`home__button ${action.class}`}
                                 key={action.title}>
