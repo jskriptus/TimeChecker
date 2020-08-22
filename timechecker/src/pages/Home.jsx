@@ -18,9 +18,9 @@ function Home() {
 
     const [selectedAction, setSelectedAction] = useState();
 
-    const selectAction = (action, timeSetting) => {
+    const selectAction = (action, time) => {
         setSelectedAction(action);
-        dispatchTimer(moment().add(timeSetting, "minutes").valueOf());
+        dispatchTimer(moment().add(time, "minutes").valueOf());
     };
 
     const dispatchTimer = (time) => {
@@ -31,10 +31,12 @@ function Home() {
     };
 
     const renderer = ({ minutes, seconds }) => {
+        const formattedMinutes = minutes >= 10 ? minutes : "0" + minutes;
         const formattedSeconds = seconds >= 10 ? seconds : "0" + seconds;
+        
         return (
-            <span>
-                {minutes}:{formattedSeconds}
+            <span className="home__timer">
+                {formattedMinutes}:{formattedSeconds}
             </span>
         );
     };
@@ -48,7 +50,7 @@ function Home() {
                     {userActions ? (
                         userActions.map((action) => (
                             <button
-                                onClick={() => selectAction(action, 15)}
+                                onClick={() => selectAction(action, 9)}
                                 type="submit"
                                 className={`home__button ${action.class}`}
                                 key={action.title}>

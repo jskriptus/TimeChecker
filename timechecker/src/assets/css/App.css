@@ -44,3 +44,7 @@
 .home__button_family {
   background-color: rgb(100, 102, 255);
 }
+
+.home__timer {
+  font-size: 25px;
+}
