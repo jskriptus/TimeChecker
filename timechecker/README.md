@@ -12,7 +12,7 @@ Time Checker ⚛️
 # Скопируйте проект с github
 git clone https://github.com/jskriptus/TimeChecker.git
 # Перейдите в папку с проектом
-cd timechecker/timechecker
+cd timechecker
 # Восстановите Node.js модули
 npm install
 ```

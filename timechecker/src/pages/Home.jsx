@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import Countdown from 'react-countdown';
-import store from '../redux/store';
 import moment from "moment";
-/*
-    После нажатия на действие, блок дейстствий скрывается. 
-    Появляется блок с обратным отсчетом времени (интервал пользователь указывает в найстроках)
-*/
 
 function Home() {
     const userActions = [
@@ -16,20 +12,30 @@ function Home() {
         { id: 5, title: 'Быт', class: 'home__button_household' },
     ];
 
+    // присваиваем переменной хук который возвращает ссылку на dispatch функцию
+    const dispatch = useDispatch();
+
+    // храним выбранное действие
     const [selectedAction, setSelectedAction] = useState();
 
-    const selectAction = (action, time) => {
-        setSelectedAction(action);
-        dispatchTimer(moment().add(time, "minutes").valueOf());
-    };
+    // Присваиваем переменной извлеченные данные (время) из состояния\хранилища redux
+    const storeTime = useSelector(state => state.time)
 
+    // функция принимает время в миллисекундах и диспатчит его в хранилище\состояние redux
     const dispatchTimer = (time) => {
-        store.dispatch({
+        dispatch({
             type: 'SET_TIMER',
             payload: time,
         });
     };
 
+    // функция передает\изменяет выбранное действие и передает в функцию время до завершения таймера (в миллисекундах)
+    const selectAction = (action, time) => {
+        setSelectedAction(action);
+        dispatchTimer(moment().add(time, "minutes").valueOf());
+    };
+
+    // функция рендерит таймер
     const renderer = ({ minutes, seconds }) => {
         const formattedMinutes = minutes >= 10 ? minutes : "0" + minutes;
         const formattedSeconds = seconds >= 10 ? seconds : "0" + seconds;
@@ -43,14 +49,14 @@ function Home() {
 
     return (
         <main className="home">
-            {selectedAction || store.getState().time ? (
-                <Countdown date={store.getState().time} renderer={renderer}/>
+            {selectedAction || storeTime ? (
+                <Countdown date={storeTime} renderer={renderer}/>
             ) : (
                 <div className="home__actions">
                     {userActions ? (
                         userActions.map((action) => (
                             <button
-                                onClick={() => selectAction(action, 9)}
+                                onClick={() => selectAction(action, 15)}
                                 type="submit"
                                 className={`home__button ${action.class}`}
                                 key={action.title}>
