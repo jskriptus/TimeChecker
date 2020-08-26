@@ -14,6 +14,7 @@ function Info() {
     return (
         <div className="info">
             <div className="info__chart">
+                <h1>Недельная статистика</h1>
                 <PieChart data={userActions} />
             </div>
         </div>
