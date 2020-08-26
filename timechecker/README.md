@@ -3,8 +3,8 @@ Time Checker ⚛️
 
 Моё первое личное SPA-приложение которое помогает понять на что тратится личное время.
 
-* Использованы: HTML5, CSS3, JavaScript, React и Webpack.
-* Библиотеки: [Redux](https://github.com/reduxjs/redux), [MomentJS](https://github.com/moment/moment/), [React Countdown](https://github.com/ndresx/react-countdown), [React Router Dom](https://github.com/ReactTraining/react-router).
+* Использованы: HTML5, CSS3, JavaScript и React.
+* Библиотеки: [Redux](https://github.com/reduxjs/redux), [MomentJS](https://github.com/moment/moment/), [React Countdown](https://github.com/ndresx/react-countdown), [React Router Dom](https://github.com/ReactTraining/react-router), [Nivo](https://github.com/plouc/nivo).
 
 Как установить
 -------------------------
@@ -21,9 +21,10 @@ npm install
 -------------------------
 - [x] Структура приложения
 - [x] Главная страница
-- [x] Таймер
+- [x] - Таймер
 - [ ] Настройки
 - [ ] Статистика
+- [ ] - Графики
 - [ ] Firebase
 
 Для связи

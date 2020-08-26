@@ -21,30 +21,16 @@
   cursor: pointer;
 }
 
-.home__button_nohave {
-  background-color: rgb(163, 163, 163);
-}
-
-.home__button_work {
-  background-color: rgb(140, 255, 140);
-}
-
-.home__button_self {
-  background-color: rgb(255, 255, 152);
-}
-
-.home__button_chill {
-  background-color: rgb(134, 237, 255);
-}
-
-.home__button_household {
-  background-color: rgb(255, 132, 239);
-}
-
-.home__button_family {
-  background-color: rgb(100, 102, 255);
-}
-
 .home__timer {
   font-size: 25px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+}
+
+.info__chart {
+  height: 500px;
+  width: 500px;
 }
