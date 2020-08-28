@@ -22,13 +22,26 @@
 }
 
 .home__timer {
-  font-size: 25px;
+  font-size: 250px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
 }
 
 .info {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
+
+.info__sort {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
 
 .info__chart {
   height: 400px;

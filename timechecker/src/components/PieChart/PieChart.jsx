@@ -4,7 +4,6 @@ import { ResponsivePie } from '@nivo/pie';
 const PieChart = ({ data }) => (
     <ResponsivePie
         data={data}
-
         innerRadius={0.5}
         padAngle={0.7}
         fit={false}

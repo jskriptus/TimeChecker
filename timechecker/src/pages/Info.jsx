@@ -1,5 +1,5 @@
 import React from 'react';
-import PieChart from '../components/PieChart/PieChart';
+import { PieChart, SortStat } from '../components';
 
 // Пользовательские действия
 const userActions = [
@@ -13,9 +13,11 @@ const userActions = [
 function Info() {
     return (
         <div className="info">
+            <div className="info__sort">
+                <SortStat className="info__sort__actions" />
+            </div>
             <div className="info__chart">
-                <h1>Недельная статистика</h1>
-                <PieChart data={userActions} />
+                <PieChart className="info__chart__pie" data={userActions} />
             </div>
         </div>
     );

@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import './assets/css/App.css';
 import './assets/css/normalize.css';
+import 'antd/dist/antd.css';
 
 import { Header } from './components';
 import { Home, Info, Setting } from './pages';
